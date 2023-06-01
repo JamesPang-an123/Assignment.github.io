@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #333333;
+      color: red;
+      font-size: 20px;
+    }
+
+    #container {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 100px;
+    }
+
+    #sumForm {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    #result {
+      font-size: 28px;
+      font-weight: bold;
+      margin-top: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div>
+      <h2>Sum of Numbers in Range</h2>
+
+      <!-- Form to input starting and ending numbers -->
+      <form id="sumForm">
+        <label for="startNumber">Starting Number:</label>
+        <input type="number" id="startNumber" required>
+
+        <br>
+
+        <label for="endNumber">Ending Number:</label>
+        <input type="number" id="endNumber" required>
+
+        <br>
+
+        <button type="submit">Calculate Sum</button>
+      </form>
+
+      <!-- Display the sum and numbers added -->
+      <div id="result"></div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('sumForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      // Retrieve starting and ending numbers from the form
+      var startNumber = parseInt(document.getElementById('startNumber').value);
+      var endNumber = parseInt(document.getElementById('endNumber').value);
+
+      var sum = 0;
+      var numbersAdded = [];
+
+      // Calculate the sum and collect the numbers added
+      for (var i = startNumber; i <= endNumber; i++) {
+        sum += i;
+        numbersAdded.push(i);
+      }
+
+      // Display the sum and numbers added
+      document.getElementById('result').innerHTML = 'The sum is: ' + sum + '<br>' + 'Numbers added: ' + numbersAdded.join(', ');
+    });
+  </script>
+</body>
+</html>
